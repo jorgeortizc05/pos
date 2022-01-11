@@ -4,10 +4,11 @@ class ControladorUsuarios
 {
 
     /*=================================================
-    INGRESO DE USUARIOS
+    LOGIN DE USUARIOS
     =================================================*/
-    public function ctrIngresoUsuario()
+    static public function ctrIngresoUsuario()
     {
+        //si hago un post con el form y este post tiene un name="ingUsuario", entra
         if (isset($_POST["ingUsuario"])) { //si existe ese campo
             if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) &&
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])) {
@@ -30,4 +31,72 @@ class ControladorUsuarios
             }
         }
     }
+
+    /*=================================================
+    NUEVO REGISTRO
+    =================================================*/
+    static public function ctrCrearUsuario()
+    {
+        //si hago un post con el modal usuario y del form y este post tiene un name="nuevoUsuario", entra
+
+        if (isset($_POST["nuevoUsuario"])) {
+//            echo $_POST["nuevoUsuario"] . $_POST["nuevoUsuario"] . $_POST["nuevoPassword"];
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/', $_POST["nuevoNombre"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])) {
+
+                $tabla = "usuarios";
+                $datos = array("nombre" => $_POST["nuevoNombre"],
+                    "usuario" => $_POST["nuevoUsuario"],
+                    "password" => $_POST["nuevoPassword"],
+                    "perfil" => $_POST["nuevoPerfil"]);
+
+                $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+                if($respuesta == "ok"){
+                    echo "<script>
+                    $(function (){
+                        Swal.fire({
+                            type:'success',
+                            title: 'El usuario ha sido guardado correctamente',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false,
+                        }).then((result) =>{
+                            if(result.value){
+                                window.location = 'usuarios';
+                            }
+                        });
+                    })
+                </script>";
+                }
+            } else {
+                echo "<script>
+                    $(function (){
+                        Swal.fire({
+                            type:'error',
+                            title: 'El usuario no puede ir vacio o llevar caracteres especiales',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false,
+                        }).then((result) =>{
+                            if(result.value){
+                                window.location = 'usuarios';
+                            }
+                        });
+                    })
+                </script>";
+                /*echo '<script>
+                $(function (){
+                  Swal.fire(
+                      "Good job!",
+                      "You clicked the button!",
+                      "success"
+                    )
+                });
+                </script>';*/
+            }
+        }
+    }
+
+
 }

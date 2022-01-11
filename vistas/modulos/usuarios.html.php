@@ -124,7 +124,7 @@ MODAL USUARIOS
 <div class="modal" id="modalAgregarUsuario">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="">
                 <!--=============================================
                 MODAL HEADER
                 =============================================-->
@@ -144,7 +144,7 @@ MODAL USUARIOS
 
                     <div class="form-group">
 
-                        <label for="nuevoNombre">Nombre</label>
+                        <label for="email">Nombre</label>
                         <input type="text" class="form-control" placeholder="Ingrese su nombre" id="nuevoNombre"
                                name="nuevoNombre">
 
@@ -152,7 +152,7 @@ MODAL USUARIOS
 
                     <div class="form-group">
 
-                        <label for="nuevoUsuario">Usuario:</label>
+                        <label for="pwd">Usuario:</label>
                         <input type="text" class="form-control" placeholder="Ingrese su usuario" id="nuevoUsuario"
                                name="nuevoUsuario">
 
@@ -160,15 +160,15 @@ MODAL USUARIOS
 
                     <div class="form-group">
 
-                        <label for="nuevoPassword">Contraseña:</label>
+                        <label for="pwd">Contraseña:</label>
                         <input type="password" class="form-control" id="nuevoPassword" name="nuevoPassword">
 
                     </div>
 
                     <div class="form-group">
 
-                        <label for="nuevoPerfil">Perfil:</label>
-                        <select class="form-control input-lg" name="nuevoPerfil" id="nuevoPerfil">
+                        <label for="pwd">Contraseña:</label>
+                        <select class="form-control input-lg" name="nuevoPerfil">
                             <option value="">Seleccionar perfil</option>
                             <option value="">Administrador</option>
                             <option value="">Especial</option>
@@ -199,14 +199,6 @@ MODAL USUARIOS
                     <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Salir</button>
 
                 </div>
-                <!--=============================================
-                Metodo para guardar el usuario
-                =============================================-->
-                <?php
-                $crearUsuario = new ControladorUsuarios();
-                $crearUsuario->ctrCrearUsuario();
-                ?>
-
             </form>
         </div>
     </div>
