@@ -38,14 +38,19 @@ class ControladorUsuarios
     static public function ctrCrearUsuario()
     {
         //si hago un post con el modal usuario y del form y este post tiene un name="nuevoUsuario", entra
-
         if (isset($_POST["nuevoUsuario"])) {
 //            echo $_POST["nuevoUsuario"] . $_POST["nuevoUsuario"] . $_POST["nuevoPassword"];
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/', $_POST["nuevoNombre"]) &&
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])) {
+                /*=================================================
+                VALIDAR IMAGEN
+                =================================================*/
+                if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+                    var_dump($_FILES["nuevaFoto"]["tmp_name"]);
+                }
 
-                $tabla = "usuarios";
+                /*$tabla = "usuarios";
                 $datos = array("nombre" => $_POST["nuevoNombre"],
                     "usuario" => $_POST["nuevoUsuario"],
                     "password" => $_POST["nuevoPassword"],
@@ -54,13 +59,14 @@ class ControladorUsuarios
                 $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
                 if($respuesta == "ok"){
                     echo "<script>
+                    //Script en php da error de Swal no define, primero necesita a que se carge todo el javascript
+                    //para ello se utiliza $(function(){})
                     $(function (){
                         Swal.fire({
-                            type:'success',
+                            icon:'success',
                             title: 'El usuario ha sido guardado correctamente',
                             showConfirmButton: true,
-                            confirmButtonText: 'Cerrar',
-                            closeOnConfirm: false,
+                            confirmButtonText: 'Cerrar'
                         }).then((result) =>{
                             if(result.value){
                                 window.location = 'usuarios';
@@ -68,16 +74,15 @@ class ControladorUsuarios
                         });
                     })
                 </script>";
-                }
+                }*/
             } else {
                 echo "<script>
                     $(function (){
                         Swal.fire({
-                            type:'error',
+                            icon:'error',
                             title: 'El usuario no puede ir vacio o llevar caracteres especiales',
                             showConfirmButton: true,
-                            confirmButtonText: 'Cerrar',
-                            closeOnConfirm: false,
+                            confirmButtonText: 'Cerrar'
                         }).then((result) =>{
                             if(result.value){
                                 window.location = 'usuarios';
@@ -85,15 +90,7 @@ class ControladorUsuarios
                         });
                     })
                 </script>";
-                /*echo '<script>
-                $(function (){
-                  Swal.fire(
-                      "Good job!",
-                      "You clicked the button!",
-                      "success"
-                    )
-                });
-                </script>';*/
+
             }
         }
     }

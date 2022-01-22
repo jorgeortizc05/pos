@@ -124,7 +124,7 @@ MODAL USUARIOS
 <div class="modal" id="modalAgregarUsuario">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <!--=============================================
                 MODAL HEADER
                 =============================================-->
@@ -168,11 +168,12 @@ MODAL USUARIOS
                     <div class="form-group">
 
                         <label for="nuevoPerfil">Perfil:</label>
+
                         <select class="form-control input-lg" name="nuevoPerfil" id="nuevoPerfil">
                             <option value="">Seleccionar perfil</option>
-                            <option value="">Administrador</option>
-                            <option value="">Especial</option>
-                            <option value="">Vendedor</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Especial">Especial</option>
+                            <option value="Vendedor">Vendedor</option>
                         </select>
 
                     </div>
@@ -180,9 +181,9 @@ MODAL USUARIOS
                     <div class="form-group">
 
                         <label for="pwd">Subir Foto:</label>
-                        <input type="file" class="" id="nuevaFoto" name="nuevaFoto">
-                        <p class="note-help-block"> Peso máximo de la foto 200 MB</p>
-                        <img src="vistas/img/usuarios/default/user-default.jpg" class="img-thumbnail" width="100px">
+                        <input type="file" class="nuevaFoto" id="nuevaFoto" name="nuevaFoto">
+                        <p class="note-help-block"> Peso máximo de la foto 2 MB</p>
+                        <img src="vistas/img/usuarios/default/user-default.jpg" class="img-thumbnail previsualizar" width="100px">
 
                     </div>
 
@@ -211,3 +212,7 @@ MODAL USUARIOS
         </div>
     </div>
 </div>
+
+<script>
+
+</script>

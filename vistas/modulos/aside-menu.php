@@ -65,7 +65,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="productos" class="nav-link">
-                        <i class="nav-icon fa fa-product-hunt"></i>
+                        <i class="nav-icon fab fa-product-hunt"></i>
                         <p>
                             Productos
                         </p>
@@ -118,7 +118,7 @@
 
                 <li class="nav-item">
                     <a href="salir" class="nav-link">
-                        <i class="nav-icon fa fa-users"></i>
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Salir
 
